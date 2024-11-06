@@ -1,3 +1,10 @@
+import Teste from "@/components/teste";
+
+
+
+
 export default function Home() {
-  return <div>Olá Mundo</div>;
+  return (
+    <Teste />
+  )
 }
