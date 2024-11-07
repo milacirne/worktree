@@ -1,8 +1,13 @@
 'use client'
 
 import React, { useState } from 'react'
+import { ThemeProvider } from 'styled-components'
+import GlobalStyle from '@/styles/global'
+
 import { useServerInsertedHTML } from 'next/navigation'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
+import { darkTheme } from '@/themes/dark'
+import { lightTheme } from '@/themes/light'
 
 export default function StyledComponentsRegistry({
   children,
@@ -11,6 +16,12 @@ export default function StyledComponentsRegistry({
 }) {
 
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())
+
+  const [usingLightTheme, setUsingLightTheme] = useState(false)
+
+  function toggleTheme () {
+    setUsingLightTheme(!usingLightTheme)
+  }
 
   useServerInsertedHTML(() => {
     const styles = styledComponentsStyleSheet.getStyleElement()
@@ -22,7 +33,10 @@ export default function StyledComponentsRegistry({
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      {children}
+      <ThemeProvider theme={usingLightTheme ? lightTheme : darkTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
     </StyleSheetManager>
   )
 }

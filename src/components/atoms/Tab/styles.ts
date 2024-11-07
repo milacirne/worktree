@@ -16,22 +16,25 @@ export const TabButton = styled.button<TabProps>`
     }
     return 500
   }};
-  line-height: ${(props) => props.$authtab ? '1.909rem' : '1.671rem'};;
+  line-height: ${(props) => props.$authtab ? '1.909rem' : '1.671rem'};
+
   color: ${(props) =>
     props.$active
-      ? '#FFFFFF'
+      ? props.theme.textColor
       : props.$authtab
-      ? '#AFAFAF'
-      : '#B0B0B0'
+      ? props.theme.inactiveTagButton
+      : props.theme.inputTextColor
   };
+
   background: ${(props) => {
     if (props.$active) {
       return props.$authtab
-      ? 'linear-gradient(180deg, #825BDD 0%, #5327BA 100%)'
-      : '#101419';
+      ? `linear-gradient(180deg, ${props.theme.backgroundButton} 0%, ${props.theme.darkBackgroundButton} 100%)`
+      : props.theme.backgroundColor;
     }
     return 'transparent';
   }};
+
   border: none;
   border-radius: 9.9rem;
   cursor: pointer;

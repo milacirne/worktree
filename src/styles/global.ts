@@ -1,6 +1,5 @@
-'use client'
-
 import { createGlobalStyle } from 'styled-components'
+import { Theme } from '@/themes/theme'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -19,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #101419; // alterar com a variável
+    background-color: ${({theme}) => (theme as Theme).backgroundColor};
   }
 `
 

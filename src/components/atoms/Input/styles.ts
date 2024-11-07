@@ -7,15 +7,15 @@ export const Input = styled.input`
   height: 5.1rem;
   padding: 0 2.4rem;
   margin-top: 1.6rem;
-  border: 1px solid #052B2E; // adicionar a variável
+  border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 9.9rem;
-  background-color: #080A0C; // adicionar a variável
+  background-color: ${(props) => props.theme.inputBackgroundColor};
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.909rem;
-  color: #B0B0B0; // adicionar a variável
+  color: ${(props) => props.theme.inputTextColor};
 
   ::placeholder {
-    color: #B0B0B0; // adicionar a variável
+    color: ${(props) => props.theme.inputTextColor};
   }
 `

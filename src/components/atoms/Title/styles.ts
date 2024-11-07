@@ -9,5 +9,5 @@ export const Title = styled.h1<TitleProps>`
   font-weight: ${(props) => props.fontWeight || 400};
   line-height: ${(props) => `${props.$lineHeight}rem` || '2.864rem'};
   text-transform: ${(props) => props.textTransform || 'capitalize'};
-  color: #FFFFFF; // alterar com a variável
+  color: ${({theme}) => theme.textColor};
 `
